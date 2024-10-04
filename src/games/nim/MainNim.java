@@ -26,6 +26,18 @@ public class MainNim {
         String inputStr = scanner.next();
         nbreDallumetes = Integer.parseInt(inputStr);
         System.out.print("\n");
+
+        while (nbreDallumetes <= 0) {
+            if(nbreDallumetes <= 0){
+                System.out.println("Veuillez choisir un nombre supérieur ou égal à 1"); 
+                System.out.print("Entrez le nombre initial d'allumettes: ");
+                inputStr = scanner.next();
+                nbreDallumetes = Integer.parseInt(inputStr);
+                System.out.print("\n");
+            }
+
+            else break;
+        }
  
 
         System.out.print("Entrez le nombre maximum d'allumettes retirable: ");
