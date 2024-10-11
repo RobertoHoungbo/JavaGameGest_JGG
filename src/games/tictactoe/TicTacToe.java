@@ -11,12 +11,12 @@ public class TicTacToe {
 
     // Implémentation de la classe TicTacToe avec ses attributs
 
-    private String joueur1;
-    private String joueur2;
+    protected String joueur1;
+    protected String joueur2;
 
-    private String joueurCourant;
+    protected String joueurCourant;
 
-    private String[][] grilleCoupsJoues;
+    protected String[][] grilleCoupsJoues;
 
     public TicTacToe(String joueur1, String joueur2) {
 

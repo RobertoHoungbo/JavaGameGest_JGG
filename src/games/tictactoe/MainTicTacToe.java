@@ -21,43 +21,89 @@ public class MainTicTacToe {
         nomJoueur2 = scanner.next();
         System.out.print("\n");
 
-        TicTacToe nouvellePartieTicTacToe = new TicTacToe(nomJoueur1, nomJoueur2);
+        System.out.print("Voulez-vous jouer avec des indices ?(Entrez oui ou non selon votre préférence) : ");
+        String inputStr = scanner.next();
 
-        System.out.println("La partie débute !");
+        if(inputStr.equals("oui")){
+            TicTacToeWithHints nouvellePartieTicTacToe = new TicTacToeWithHints(nomJoueur1, nomJoueur2);
 
-        System.out.println(nouvellePartieTicTacToe.situationToString()); 
+            System.out.println("La partie débute !");
 
-        while (!nouvellePartieTicTacToe.isOver()) {
-            System.out.print("\n");
-            System.out.println("C'est à " + nouvellePartieTicTacToe.getCurrentPlayer() + " de jouer ");
-            System.out.println("Votre coup : ");
+            System.out.println(nouvellePartieTicTacToe.situationToString()); 
 
-            System.out.print("- rangée ? ");
-            String inputStr = scanner.next();
-            ligneCoup = Integer.parseInt(inputStr);
+            while (!nouvellePartieTicTacToe.isOver()) {
+                System.out.print("\n");
+                System.out.println("C'est à " + nouvellePartieTicTacToe.getCurrentPlayer() + " de jouer ");
+                System.out.println("Votre coup : ");
 
-            System.out.print("- colonne ? ");
-            inputStr = scanner.next();
-            colonneCoup = Integer.parseInt(inputStr);
-            System.out.print("\n");
+                System.out.print("- rangée ? ");
+                inputStr = scanner.next();
+                ligneCoup = Integer.parseInt(inputStr);
 
-            nouvellePartieTicTacToe.execute(ligneCoup, colonneCoup);
+                System.out.print("- colonne ? ");
+                inputStr = scanner.next();
+                colonneCoup = Integer.parseInt(inputStr);
+                System.out.print("\n");
 
-            System.out.println(nouvellePartieTicTacToe.situationToString());   
+                nouvellePartieTicTacToe.execute(ligneCoup, colonneCoup);
+
+                System.out.println(nouvellePartieTicTacToe.situationToString());   
+                
+            }
+
+            scanner.close();
+
+            if(nouvellePartieTicTacToe.getWinner() != null){
+                System.out.println("Le gagnant est " + nouvellePartieTicTacToe.getWinner());
+            }
             
+        
+            else if(nouvellePartieTicTacToe.tableauRempli()){
+                System.out.println("Match Nul !");
+            }
         }
 
-        scanner.close();
+        else{
+            TicTacToe nouvellePartieTicTacToe = new TicTacToe(nomJoueur1, nomJoueur2);
 
-        if(nouvellePartieTicTacToe.getWinner() != null){
-            System.out.println("Le gagnant est " + nouvellePartieTicTacToe.getWinner());
-        }
-         
-    
-        else if(nouvellePartieTicTacToe.tableauRempli()){
-            System.out.println("Match Nul !");
-        }
+            System.out.println("La partie débute !");
 
+            System.out.println(nouvellePartieTicTacToe.situationToString()); 
+
+            while (!nouvellePartieTicTacToe.isOver()) {
+                System.out.print("\n");
+                System.out.println("C'est à " + nouvellePartieTicTacToe.getCurrentPlayer() + " de jouer ");
+                System.out.println("Votre coup : ");
+
+                System.out.print("- rangée ? ");
+                inputStr = scanner.next();
+                ligneCoup = Integer.parseInt(inputStr);
+
+                System.out.print("- colonne ? ");
+                inputStr = scanner.next();
+                colonneCoup = Integer.parseInt(inputStr);
+                System.out.print("\n");
+
+                nouvellePartieTicTacToe.execute(ligneCoup, colonneCoup);
+
+                System.out.println(nouvellePartieTicTacToe.situationToString());   
+                
+            }
+
+            scanner.close();
+
+            if(nouvellePartieTicTacToe.getWinner() != null){
+                System.out.println("Le gagnant est " + nouvellePartieTicTacToe.getWinner());
+            }
+            
+        
+            else if(nouvellePartieTicTacToe.tableauRempli()){
+                System.out.println("Match Nul !");
+            }
+
+
+        }
+        
         
     }
 }
