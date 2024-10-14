@@ -58,38 +58,45 @@ public class TicTacToeWithHints extends TicTacToe {
 
     public String situationToString() {
         int positionHint;
+        
         String chaine = "";
-
+        
         if (this.hints().size() > 0) {
-            for (int k = 0; k < this.hints().size(); k++) {
-                positionHint = this.hints().get(k);
-    
-                chaine = " " + " 0 " + "1 " + "2 ";
-                chaine += System.lineSeparator();
+            chaine = " " + " 0 " + "1 " + "2 ";
+            chaine += System.lineSeparator();
 
-                for (int i = 0; i < 3; i++) {
-                    chaine += String.valueOf(i) + " ";
+            for (int i = 0; i < 3; i++) {
+                
+                chaine += String.valueOf(i) + " "; 
+                
 
-                    for (int j = 0; j < 3; j++) {
+                for (int j = 0; j < 3; j++) {
+                    boolean hintFound = false;
+        
+                    
+                    for (int k = 0; k < this.hints().size(); k++) {
+                        positionHint = this.hints().get(k);
                         
-                        if ((positionHint - positionHint % 3) / 3 == i && positionHint % 3 == j
-                                && this.grilleCoupsJoues[i][j].equals(".")) {
-                            this.grilleCoupsJoues[i][j] = "! ";
-
-                            chaine += String
-                                    .valueOf(this.grilleCoupsJoues[i][j]);
-
-                            this.grilleCoupsJoues[i][j] = ".";
-
-                        } else
-                            chaine += String.valueOf(this.grilleCoupsJoues[i][j]) + " ";
+                        if ((positionHint - positionHint % 3) / 3 == i && (positionHint % 3 == j)
+                                && this.grilleCoupsJoues[i][j].equals(".") && !this.isOver()) {
+                            chaine += "! ";  
+                            hintFound = true;
+                            break;  
+                        }
                     }
+        
+                    if (!hintFound) {
+                        
+                        chaine += String.valueOf(this.grilleCoupsJoues[i][j]) + " ";
+                    }
+                }
 
                     chaine += System.lineSeparator();
                 }
 
             }
-        }
+            
+        
 
 
         else {
