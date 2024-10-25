@@ -86,8 +86,18 @@ public class TicTacToeWithHints extends TicTacToe {
                     }
         
                     if (!hintFound) {
-                        
-                        chaine += String.valueOf(this.grilleCoupsJoues[i][j]) + " ";
+
+                        if(this.grilleCoupsJoues[i][j].equals(this.joueur1)){
+                            chaine += "X ";
+                        }
+        
+                        else if(this.grilleCoupsJoues[i][j].equals(this.joueur2)){
+                            chaine += "O ";
+                        }
+
+                        else{
+                            chaine += ". ";
+                        }
                     }
                 }
 
@@ -106,7 +116,18 @@ public class TicTacToeWithHints extends TicTacToe {
                 chaine += String.valueOf(i) + " ";
 
                 for (int j = 0; j < 3; j++) {
-                    chaine += String.valueOf(this.grilleCoupsJoues[i][j]) + " ";
+
+                    if(this.grilleCoupsJoues[i][j].equals(this.joueur1)){
+                        chaine += "X ";
+                    }
+    
+                    else if(this.grilleCoupsJoues[i][j].equals(this.joueur2)){
+                        chaine += "O ";
+                    }
+
+                    else{
+                        chaine += ". ";
+                    }
                 }
 
                 chaine += System.lineSeparator();
