@@ -12,7 +12,7 @@ import games.players.Player;
  * 
  */
 
-public class TicTacToe extends AbstractGame implements Game{
+public class TicTacToe extends AbstractGame{
 
     // Implémentation de la classe TicTacToe avec ses attributs
 

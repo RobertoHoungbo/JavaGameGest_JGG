@@ -2,7 +2,7 @@ package games.genericgames;
 
 import games.players.Player;
 
-public abstract class AbstractGame implements Player{
+public abstract class AbstractGame implements Game{
     protected Player joueur1;
     protected Player joueur2;
     protected Player joueurCourant; 
@@ -30,12 +30,6 @@ public abstract class AbstractGame implements Player{
 
     public Player getCurrentPlayer(){
         return this.joueurCourant;
-    }
-
-    @Override
-    public int chooseMove(Game myGame) {
-        
-        return 0;
     }
 
 

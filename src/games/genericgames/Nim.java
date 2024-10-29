@@ -13,7 +13,7 @@ import games.players.Player;
  */
 
 
-public class Nim extends AbstractGame implements Game{
+public class Nim extends AbstractGame{
 
     // Implémentation de la classe Nim avec ses attributs
 
@@ -29,6 +29,10 @@ public class Nim extends AbstractGame implements Game{
         this.nbreCourantDallumettes = tailleInitiale;
     }
 
+    public Nim(Player j1, Player j2) {
+        super(j1, j2);
+    }
+
     // méthode getInitialNbMatches() : accesseur pour le nombre initial d'allumettes 
     public int getInitialNbMatches() {
         return this.tailleInitiale;
@@ -42,7 +46,7 @@ public class Nim extends AbstractGame implements Game{
     // méthode situationToString()  : affiche l'état actuel du jeu
     public String situationToString() {
         System.out.println(this.validMoves());
-        return "Il reste " + getCurrentNbMatches() + " allumettes.";
+        return "Il reste " + getCurrentNbMatches() + " allumettes." + "\n";
     }
 
     // méthode removeMatches : retire le nombre d'allumettes spécifié par le joueur courant 

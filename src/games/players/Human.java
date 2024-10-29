@@ -15,28 +15,24 @@ public class Human implements Player{
     }
     @Override
     public int chooseMove(Game myGame) {
+
+        System.out.println("Au tour de " + this.nom);
         System.out.print("Liste des coups valides : [");
         for(int i=0; i<myGame.validMoves().size();i++){
-            System.out.print(myGame.validMoves().get(i) + ", ");
+            System.out.print(myGame.validMoves().get(i) + ",");
         }
         System.out.println("]");
 
         System.out.println("Choisissez votre coup dans la liste affichée : ");
-        String inputStr = this.scanner.next();
-        int coupChoisi = Integer.parseInt(inputStr);
-
-        if(myGame.validMoves().contains(coupChoisi)){
-            
-            return coupChoisi;
-        }
+        int coupChoisi = Integer.parseInt(this.scanner.next());
         
         while(!myGame.validMoves().contains(coupChoisi)){
             System.out.println("Veuillez choisir un coup valide");
-            this.chooseMove(myGame);
+            coupChoisi = Integer.parseInt(this.scanner.next());
         }
         
 
-        return 0;
+        return coupChoisi;
     }
 
     @Override
