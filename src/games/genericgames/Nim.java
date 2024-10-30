@@ -29,10 +29,6 @@ public class Nim extends AbstractGame{
         this.nbreCourantDallumettes = tailleInitiale;
     }
 
-    public Nim(Player j1, Player j2) {
-        super(j1, j2);
-    }
-
     // méthode getInitialNbMatches() : accesseur pour le nombre initial d'allumettes 
     public int getInitialNbMatches() {
         return this.tailleInitiale;
