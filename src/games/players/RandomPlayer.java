@@ -13,7 +13,7 @@ public class RandomPlayer implements Player{
 
     @Override
     public int chooseMove(Game myGame) {
-        System.out.println("Au tour de " + this.hashCode());
+        System.out.println("Au tour de Joueur Aléatoire n°" + this.hashCode());
         int coupAleatoire = this.randomPlayer.nextInt(myGame.validMoves().size());
 
         return myGame.validMoves().get(coupAleatoire);

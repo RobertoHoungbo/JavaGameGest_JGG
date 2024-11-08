@@ -43,6 +43,8 @@ public class NegamaxPlayer implements Player{
 
     @Override
     public int chooseMove(Game currentGame){
+        System.out.println("Au tour de Joueur Négamax n°" + this.hashCode());
+
         Integer meilleureValeur = null;
         Integer meilleurCoup = null;
        
