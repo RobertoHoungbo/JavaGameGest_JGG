@@ -20,6 +20,13 @@ public class Orchestrator{
         }
 
         System.out.println(this.myGame.situationToString());
-        System.out.println("Le joueur gagnant est:  " + myGame.getWinner());
+        if(myGame.getWinner() != null){
+            System.out.println("Le joueur gagnant est:  " + myGame.getWinner());
+        }
+
+        else{
+            System.out.println("Partie nulle");
+        }
+        
     }
 }
