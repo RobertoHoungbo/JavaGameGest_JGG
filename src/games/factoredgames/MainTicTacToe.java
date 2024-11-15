@@ -45,7 +45,19 @@ public class MainTicTacToe {
                 colonneCoup = Integer.parseInt(inputStr);
                 System.out.print("\n");
 
-                nouvellePartieTicTacToe.execute(3 * ligneCoup + colonneCoup);
+                // vérification de la validité de la case spécifiée avec la fonction isValid
+                if (nouvellePartieTicTacToe.isValid(3 * ligneCoup + colonneCoup)) {
+
+                    nouvellePartieTicTacToe.execute(3 * ligneCoup + colonneCoup);
+
+                }
+        
+                // si la case spécifiée n'est pas valide, un message d'erreur est affiché
+                else {
+                    System.out.println("La case que vous avez choisie contient déjà une valeur ou n'existe pas !");
+                }
+
+                
 
                 System.out.println(nouvellePartieTicTacToe.situationToString());   
                 
@@ -84,7 +96,19 @@ public class MainTicTacToe {
                 colonneCoup = Integer.parseInt(inputStr);
                 System.out.print("\n");
 
-                nouvellePartieTicTacToe.execute(3 * ligneCoup + colonneCoup);
+
+
+                // vérification de la validité de la case spécifiée avec la fonction isValid
+                if (nouvellePartieTicTacToe.isValid(3 * ligneCoup + colonneCoup)) {
+
+                    nouvellePartieTicTacToe.execute(3 * ligneCoup + colonneCoup);
+
+                }
+        
+                // si la case spécifiée n'est pas valide, un message d'erreur est affiché
+                else {
+                    System.out.println("La case que vous avez choisie contient déjà une valeur ou n'existe pas !");
+                }
 
                 System.out.println(nouvellePartieTicTacToe.situationToString());   
                 

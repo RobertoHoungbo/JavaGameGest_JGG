@@ -51,30 +51,20 @@ public class TicTacToe {
     // L'identifiant du joueur2 est: O
     public void execute(int ligneCoupAJouer, int colonneCoupAJouer) {
 
-        // vérification de la validité de la case spécifiée avec la fonction isValid
-        if (isValid(ligneCoupAJouer, colonneCoupAJouer)) {
-
-            // si c'est au tour du joueur1, l'identifiant X est placé dans la case
-            // correspondante
-            // et le joueur2 reprend la main
-            if (this.joueurCourant.equals(this.joueur1)) {
-                this.grilleCoupsJoues[ligneCoupAJouer][colonneCoupAJouer] = this.joueur1;
+        // si c'est au tour du joueur1, l'identifiant X est placé dans la case
+        // correspondante
+        // et le joueur2 reprend la main
+        if (this.joueurCourant.equals(this.joueur1)) {
+            this.grilleCoupsJoues[ligneCoupAJouer][colonneCoupAJouer] = this.joueur1;
                 this.joueurCourant = this.joueur2;
-            }
-
-            // si c'est au tour du joueur2, l'identifiant O est placé dans la case
-            // correspondante
-            // et le joueur1 reprend la main
-            else if (this.joueurCourant.equals(this.joueur2)) {
-                this.grilleCoupsJoues[ligneCoupAJouer][colonneCoupAJouer] = this.joueur2;
-                this.joueurCourant = this.joueur1;
-            }
-
         }
 
-        // si la case spécifiée n'est pas valide, un message d'erreur est affiché
-        else {
-            System.out.println("La case que vous avez choisie contient déjà une valeur ou n'existe pas !");
+        // si c'est au tour du joueur2, l'identifiant O est placé dans la case
+        // correspondante
+        // et le joueur1 reprend la main
+        else if (this.joueurCourant.equals(this.joueur2)) {
+            this.grilleCoupsJoues[ligneCoupAJouer][colonneCoupAJouer] = this.joueur2;
+                this.joueurCourant = this.joueur1;
         }
 
     }

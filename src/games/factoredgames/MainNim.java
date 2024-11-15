@@ -75,7 +75,17 @@ public class MainNim {
             System.out.println("======= Au tour du joueur " + nouvellePartieNim.getCurrentPlayer() + " =======");
             System.out.print("  Nombre d'allumettes à retirer: ");
             inputStr = scanner.next();
-            nouvellePartieNim.execute(Integer.parseInt(inputStr));
+
+            if (nouvellePartieNim.isValid(Integer.parseInt(inputStr))) {
+                nouvellePartieNim.execute(Integer.parseInt(inputStr));
+            
+            }
+    
+            else
+                System.out.println("Veuillez choisir un nombre compris entre 1 et " +
+                        nouvellePartieNim.getCurrentNbMatches() + " inclus, et pas plus de " + nbreMaxDallumettesARetirer
+                        + ".");
+            
             System.out.println("  " + nouvellePartieNim.situationToString());
             System.out.print("\n" + //
                                 "");

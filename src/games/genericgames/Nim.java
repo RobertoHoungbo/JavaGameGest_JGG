@@ -51,16 +51,8 @@ public class Nim extends AbstractGame{
     
     @Override
     protected void doExecute(int nbreDallumettesARetirer) {
-        if (isValid(nbreDallumettesARetirer)) {
 
-            this.nbreCourantDallumettes = this.nbreCourantDallumettes - nbreDallumettesARetirer;
-    
-        }
-
-        else
-            System.out.println("Veuillez choisir un nombre compris entre 1 et " +
-                    getCurrentNbMatches() + " inclus, et pas plus de " + this.nbreMaxDallumettesRetirableParUnJoueur
-                    + ".");
+        this.nbreCourantDallumettes = this.nbreCourantDallumettes - nbreDallumettesARetirer;
     }
 
     // @Override

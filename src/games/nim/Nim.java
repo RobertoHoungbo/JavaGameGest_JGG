@@ -58,22 +58,16 @@ public class Nim {
     // et passe la main au joueur suivant
 
     public void removeMatches(int nbreDallumettesARetirer) {
-        if (isValid(nbreDallumettesARetirer)) {
 
-            this.nbreCourantDallumettes = this.nbreCourantDallumettes - nbreDallumettesARetirer;
+        this.nbreCourantDallumettes = this.nbreCourantDallumettes - nbreDallumettesARetirer;
             
-            if (this.joueurCourant.equals(this.joueur1)) {
-                this.joueurCourant = this.joueur2;
-            }
-
-            else
-                this.joueurCourant = this.joueur1;
-        }
+        if (this.joueurCourant.equals(this.joueur1)) {
+            this.joueurCourant = this.joueur2;
+        }    
 
         else
-            System.out.println("Veuillez choisir un nombre compris entre 1 et " +
-                    getCurrentNbMatches() + " inclus, et pas plus de " + this.nbreMaxDallumettesRetirableParUnJoueur
-                    + ".");
+            this.joueurCourant = this.joueur1;
+        
     }
 
     // méthode isValid : prend en paramètre le nombre d'allumettes à retirer spécifié par le joueur courant

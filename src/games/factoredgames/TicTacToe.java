@@ -31,11 +31,8 @@ public class TicTacToe extends AbstractGame{
 
     @Override
     protected void doExecute(int coupAJouer) {
-        
-         // vérification de la validité de la case spécifiée avec la fonction isValid
-         if (isValid(coupAJouer)) {
 
-            // si c'est au tour du joueur1, l'identifiant X est placé dans la case
+        // si c'est au tour du joueur1, l'identifiant X est placé dans la case
             // correspondante
             // et le joueur2 reprend la main
             if (this.joueurCourant.equals(this.joueur1)) {
@@ -48,13 +45,8 @@ public class TicTacToe extends AbstractGame{
             else if (this.joueurCourant.equals(this.joueur2)) {
                 this.grilleCoupsJoues[coupAJouer / 3][coupAJouer % 3] = this.joueur2;
             }
-
-        }
-
-        // si la case spécifiée n'est pas valide, un message d'erreur est affiché
-        else {
-            System.out.println("La case que vous avez choisie contient déjà une valeur ou n'existe pas !");
-        }
+        
+         
         
     }
 
