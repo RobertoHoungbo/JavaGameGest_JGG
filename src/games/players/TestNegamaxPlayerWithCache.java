@@ -1,6 +1,5 @@
 package games.players;
 
-import gamestests.players.NegamaxPlayerTests;
 import gamestests.players.NegamaxPlayerWithCacheTests;
 
 

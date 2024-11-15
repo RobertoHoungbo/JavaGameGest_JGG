@@ -2,6 +2,7 @@ package games.genericgames;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import games.players.Player;
 
@@ -12,8 +13,7 @@ import games.players.Player;
  * 
  */
 
-
-public class Nim extends AbstractGame{
+public class Nim extends AbstractGame {
 
     // Implémentation de la classe Nim avec ses attributs
 
@@ -29,7 +29,7 @@ public class Nim extends AbstractGame{
         this.nbreCourantDallumettes = tailleInitiale;
     }
 
-    // méthode getInitialNbMatches() : accesseur pour le nombre initial d'allumettes 
+    // méthode getInitialNbMatches() : accesseur pour le nombre initial d'allumettes
     public int getInitialNbMatches() {
         return this.tailleInitiale;
     }
@@ -39,16 +39,16 @@ public class Nim extends AbstractGame{
         return this.nbreCourantDallumettes;
     }
 
-    // méthode situationToString()  : affiche l'état actuel du jeu
+    // méthode situationToString() : affiche l'état actuel du jeu
     public String situationToString() {
         System.out.println(this.validMoves());
         return "Il reste " + getCurrentNbMatches() + " allumettes." + "\n";
     }
 
-    // méthode removeMatches : retire le nombre d'allumettes spécifié par le joueur courant 
+    // méthode removeMatches : retire le nombre d'allumettes spécifié par le joueur
+    // courant
     // et passe la main au joueur suivant
 
-    
     @Override
     protected void doExecute(int nbreDallumettesARetirer) {
 
@@ -57,11 +57,12 @@ public class Nim extends AbstractGame{
 
     // @Override
     // public void execute(int nbreDallumettesARetirer) {
-        
+
     // }
 
-    // méthode isValid : prend en paramètre le nombre d'allumettes à retirer spécifié par le joueur courant
-    // et vérifie si le nombre est valide 
+    // méthode isValid : prend en paramètre le nombre d'allumettes à retirer
+    // spécifié par le joueur courant
+    // et vérifie si le nombre est valide
 
     public boolean isValid(int nbreDallumettesARetirer) {
         if (nbreDallumettesARetirer < 1 || nbreDallumettesARetirer > getCurrentNbMatches()
@@ -73,7 +74,8 @@ public class Nim extends AbstractGame{
             return true;
     }
 
-    // méthode isOver() : vérifie si la partie est terminée ou non en focntion de la valeur du nombre courant d'allumettes
+    // méthode isOver() : vérifie si la partie est terminée ou non en focntion de la
+    // valeur du nombre courant d'allumettes
 
     public boolean isOver() {
         if (getCurrentNbMatches() != 0) {
@@ -84,10 +86,12 @@ public class Nim extends AbstractGame{
             return true;
     }
 
-    // méthode getWinner() : renvoie le gagnant de la partie 
-    // Le joueur perdant est celui qui retire la dernière allumette 
-    // Lorsqu'il retire la dernière allumette le jeu passe la main au joueur suivant qui devient le joueur courant
-    // Le gagnant est donc le joueur courant lorsque le nombre d'allumettes restant est 0
+    // méthode getWinner() : renvoie le gagnant de la partie
+    // Le joueur perdant est celui qui retire la dernière allumette
+    // Lorsqu'il retire la dernière allumette le jeu passe la main au joueur suivant
+    // qui devient le joueur courant
+    // Le gagnant est donc le joueur courant lorsque le nombre d'allumettes restant
+    // est 0
 
     public Player getWinner() {
         if (isOver() && this.joueurCourant.equals(this.joueur1)) {
@@ -103,8 +107,8 @@ public class Nim extends AbstractGame{
     @Override
     public List<Integer> validMoves() {
         List<Integer> coupsValides = new ArrayList<Integer>();
-        for(int i=1; i<=this.nbreCourantDallumettes; i++){
-            if(this.isValid(i)){
+        for (int i = 1; i <= this.nbreCourantDallumettes; i++) {
+            if (this.isValid(i)) {
                 coupsValides.add(i);
             }
         }
@@ -113,7 +117,7 @@ public class Nim extends AbstractGame{
 
     @Override
     public Game copy() {
-        Nim res = new Nim(this.tailleInitiale, this.nbreMaxDallumettesRetirableParUnJoueur, this.joueur1, this.joueur2); 
+        Nim res = new Nim(this.tailleInitiale, this.nbreMaxDallumettesRetirableParUnJoueur, this.joueur1, this.joueur2);
         res.nbreCourantDallumettes = this.nbreCourantDallumettes;
         res.joueurCourant = super.joueurCourant;
         return res;
@@ -122,6 +126,24 @@ public class Nim extends AbstractGame{
     @Override
     public String moveToString(int coup) {
         return "[" + coup + "]";
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if (other == null || !(other instanceof Nim)) {
+            return false;
+        }
+
+        Nim otherAsNim = (Nim) other;
+        return  this.joueurCourant.equals(otherAsNim.joueurCourant)
+                && this.nbreCourantDallumettes ==  otherAsNim.nbreCourantDallumettes
+                && this.nbreMaxDallumettesRetirableParUnJoueur == otherAsNim.nbreMaxDallumettesRetirableParUnJoueur
+                && this.tailleInitiale ==  otherAsNim.tailleInitiale;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.joueurCourant, this.nbreCourantDallumettes, this.nbreMaxDallumettesRetirableParUnJoueur, this.tailleInitiale);
     }
 
 }

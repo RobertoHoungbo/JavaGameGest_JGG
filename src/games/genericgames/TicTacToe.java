@@ -1,7 +1,9 @@
 package games.genericgames;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import games.players.Player;
 
@@ -261,6 +263,22 @@ public class TicTacToe extends AbstractGame{
     @Override
     public String moveToString(int coup) {
         return "[" + coup/3 + "," + coup%3 + "]";
+    }
+
+    @Override
+    public boolean equals(Object other){
+         if (other == null || !(other instanceof TicTacToe)) {
+			return false;
+		}
+
+        TicTacToe otherAsTicTacToe = (TicTacToe) other;
+
+        return this.joueurCourant.equals(otherAsTicTacToe.joueurCourant) && Arrays.deepEquals(this.grilleCoupsJoues , otherAsTicTacToe.grilleCoupsJoues);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(this.getCurrentPlayer(), Arrays.deepHashCode(this.grilleCoupsJoues));
     }
 
 }
