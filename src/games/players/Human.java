@@ -4,15 +4,40 @@ import java.util.Scanner;
 
 import games.genericgames.Game;
 
+/*
+ * author: @roberto_houngbo
+ * fil rouge 5: Abstraction des joueurs
+ * 
+ */
+
 public class Human implements Player{
 
     private String nom;
     private Scanner scanner;
 
+
+    /**
+     * Constructeur de la classe
+     *
+     * @param nom : Le nom du joueur.
+     * @param scanner :  Le scanner pour récupérer les entrées du joueur.
+     * 
+     */
     public Human(String nom, Scanner scanner){
         this.nom = nom;
         this.scanner = scanner;
     }
+
+    /**
+     * Redéfinition de la méthode chooseMove
+     *
+     * @param myGame : L'instance du jeu joué.
+     * 
+     * @return Le coup choisi  par le joueur.
+     * 
+     * La méthode affiche la lsite des coups valides de l'instance du jeu passé en paramètre.
+     * Elle demande ensuite au joueur de choisir un coup et si le coup choisi est valide, ce coup est retourné.
+     */
     @Override
     public int chooseMove(Game myGame) {
 
@@ -35,6 +60,12 @@ public class Human implements Player{
         return coupChoisi;
     }
 
+    /**
+     * Redéfinition de la méthode toString
+     *
+     * @return Le nom du joeur qui appelle la méthode.
+     * 
+     */
     @Override
     public String toString() {
         return this.nom;

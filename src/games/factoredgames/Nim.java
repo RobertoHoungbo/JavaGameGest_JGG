@@ -3,15 +3,15 @@ package games.factoredgames;
 
 /*
  * author: @roberto_houngbo
- * game: nim
- * fil rouge 1: Jeu du Nim
+ * game: factored games - nim
+ * fil rouge 4: Jeu du Nim factorisé
  * 
  */
 
 
 public class Nim extends AbstractGame{
 
-    // Implémentation de la classe Nim avec ses attributs
+    // Implémentation de la classe Nim qui étend la classe AbstractGame 
 
     private int tailleInitiale;
     private int nbreMaxDallumettesRetirableParUnJoueur;
@@ -40,10 +40,14 @@ public class Nim extends AbstractGame{
         return "Il reste " + getCurrentNbMatches() + " allumettes.";
     }
 
-    // méthode removeMatches : retire le nombre d'allumettes spécifié par le joueur courant 
-    // et passe la main au joueur suivant
 
-    
+    /**
+     * Redéfinition de la méthode doExecute
+     *
+     * @param nbreDallumettesARetirer : le nombre d'allumettes à retirer
+     * 
+     * Retire du nombre courant d'allumettes le nombre d'allumlettes passé en paramètre.
+     */
     @Override
     protected void doExecute(int nbreDallumettesARetirer) {
 
@@ -51,10 +55,6 @@ public class Nim extends AbstractGame{
 
     }
 
-    // @Override
-    // public void execute(int nbreDallumettesARetirer) {
-        
-    // }
 
     // méthode isValid : prend en paramètre le nombre d'allumettes à retirer spécifié par le joueur courant
     // et vérifie si le nombre est valide 

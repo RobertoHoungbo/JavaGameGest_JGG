@@ -9,14 +9,14 @@ import games.players.Player;
 
 /*
  * author: @roberto_houngbo
- * game: tictactoe
- * fil rouge 2: Jeu du morpion
+ * game: generic games - tictactoe
+ * fil rouge 5: Jeu du morpion abstrait
  * 
  */
 
 public class TicTacToe extends AbstractGame{
 
-    // Implémentation de la classe TicTacToe avec ses attributs
+    // Implémentation de la classe TicTacToe qui étend la classe AbstractGame
 
     protected String[][] grilleCoupsJoues;
 
@@ -36,17 +36,26 @@ public class TicTacToe extends AbstractGame{
 
     }
 
+
+    /**
+     * Redéfinition de la méthode doExecute
+     *
+     * @param coupAJouer : l'entier correspondant au coup à jouer. Il est sous la forme 3r + c (r=row, c= column)
+     * 
+     * La méthode met à jour le plateau en placeant l'identifiant dujoueur dans la case spécifiée 
+     * par le joueur courant 
+     */
     @Override
     protected void doExecute(int coupAJouer) {
 
-        // si c'est au tour du joueur1, l'identifiant X est placé dans la case
+        // si c'est au tour du joueur1, son identifiant est placé dans la case
         // correspondante
         // et le joueur2 reprend la main
         if (this.joueurCourant.equals(this.joueur1)) {
             this.grilleCoupsJoues[coupAJouer / 3][coupAJouer % 3] = String.valueOf(this.joueur1);
         }
 
-        // si c'est au tour du joueur2, l'identifiant O est placé dans la case
+        // si c'est au tour du joueur2, son identifiant est placé dans la case
         // correspondante
         // et le joueur1 reprend la main
         else if (this.joueurCourant.equals(this.joueur2)) {
@@ -57,24 +66,14 @@ public class TicTacToe extends AbstractGame{
         
     }
 
-    // méthode execute : met à jour le plateau en placeant l'identifiant X ou O du
-    // joueur dans la case spécifiée par le joueur courant 
-
-    // L'identifiant du joueur1 est: X
-    // L'identifiant du joueur2 est: O
-    // public void execute(int coupAJouer) {
-
-
-    // }
-
-    // méthode isValid qui vérifie la validité de la case spécifiée par le joueur
-    // courant
-    // vérification 1: valeur de la ligne comprise entre 0 et 2
-    // vérification 2: valeur de la colonne comprise entre 0 et 2
-    // vérification 3: valeur de la case corresponde est "." donc vide
-
-    // si une des trois vérifications échoue, isValid retourne false
-    // sinon la case est valide et on retourne true
+    /**
+     * Méthode isValid
+     *
+     * @param coupAJouer : l'entier correspondant au coup à jouer. Il est sous la forme 3r + c (r=row, c= column)
+     * 
+     * @return Le booléen True ou False selon que le coup passé en paramètre 
+     * respecte les conditions de validité ou non
+     */
     public boolean isValid(int coupAJouer) {
 
         if (coupAJouer/3 < 0 || coupAJouer/3 > 2 || coupAJouer%3 < 0 || coupAJouer%3 > 2
@@ -228,6 +227,16 @@ public class TicTacToe extends AbstractGame{
 
     }
 
+
+    /**
+     * Redéfinition de la méthode validMoves
+     *
+     * @return La liste des coups valides
+     * 
+     * La méthode parcours la liste des coups restants et vérifie ceux qui sont valides.
+     * Les coups valides sont ensuite ajoutés dans une liste et cette liste est renvoyée à la fin.
+     * 
+     */
     @Override
     public List<Integer> validMoves() {
         List<Integer> coupsValides = new ArrayList<Integer>();
@@ -242,6 +251,15 @@ public class TicTacToe extends AbstractGame{
         return coupsValides;
     }
 
+
+    /**
+     * Redéfinition de la méthode copy
+     *
+     * @return Une instance du jeu.
+     * 
+     * La méthode permet de créer une copie avec la même situation, du jeu sur lequel elle est appelée.
+     * 
+     */
     @Override
     public Game copy() {
         TicTacToe res = new TicTacToe(this.joueur1, this.joueur2); 
@@ -260,11 +278,26 @@ public class TicTacToe extends AbstractGame{
         return res;
     }
 
+
+    /**
+     * Redéfinition de la méthode moveToString
+     *
+     * @return Une représentation naturelle du coup passé en paramètre
+     * 
+     */
     @Override
     public String moveToString(int coup) {
         return "[" + coup/3 + "," + coup%3 + "]";
     }
 
+    /**
+     * Redéfinition de la méthode equals
+     *@param other : Objet sur lequel  l'égalité sera vérifiée
+     * 
+     * @return Le booléen True ou False selon que l'objet passé en paramètre soit égal à l'objet 
+     * qui appelle la méthode
+     * 
+     */
     @Override
     public boolean equals(Object other){
          if (other == null || !(other instanceof TicTacToe)) {
@@ -276,6 +309,13 @@ public class TicTacToe extends AbstractGame{
         return this.joueurCourant.equals(otherAsTicTacToe.joueurCourant) && Arrays.deepEquals(this.grilleCoupsJoues , otherAsTicTacToe.grilleCoupsJoues);
     }
 
+
+    /**
+     * Redéfinition de la méthode hashCode
+     * 
+     * @return Le hashCode correspondant à l'objet.
+     * 
+     */
     @Override
     public int hashCode(){
         return Objects.hash(this.getCurrentPlayer(), Arrays.deepHashCode(this.grilleCoupsJoues));

@@ -2,14 +2,14 @@ package games.factoredgames;
 
 /*
  * author: @roberto_houngbo
- * game: tictactoe
- * fil rouge 2: Jeu du morpion
+ * game: factored games - tictactoe
+ * fil rouge 4: Jeu du morpion factorisé
  * 
  */
 
 public class TicTacToe extends AbstractGame{
 
-    // Implémentation de la classe TicTacToe avec ses attributs
+    // Implémentation de la classe TicTacToe qui étend la classe AbstractGame
 
     protected String[][] grilleCoupsJoues;
 
@@ -29,17 +29,25 @@ public class TicTacToe extends AbstractGame{
 
     }
 
+    /**
+     * Redéfinition de la méthode doExecute
+     *
+     * @param coupAJouer : l'entier correspondant au coup à jouer. Il est sous la forme 3r + c (r=row, c= column)
+     * 
+     * La méthode met à jour le plateau en placeant l'identifiant dujoueur dans la case spécifiée 
+     * par le joueur courant 
+     */
     @Override
     protected void doExecute(int coupAJouer) {
 
-        // si c'est au tour du joueur1, l'identifiant X est placé dans la case
+            // si c'est au tour du joueur1, son identifiant est placé dans la case
             // correspondante
             // et le joueur2 reprend la main
             if (this.joueurCourant.equals(this.joueur1)) {
                 this.grilleCoupsJoues[coupAJouer / 3][coupAJouer % 3] = this.joueur1;
             }
 
-            // si c'est au tour du joueur2, l'identifiant O est placé dans la case
+            // si c'est au tour du joueur2, son identifiant est placé dans la case
             // correspondante
             // et le joueur1 reprend la main
             else if (this.joueurCourant.equals(this.joueur2)) {
@@ -50,24 +58,14 @@ public class TicTacToe extends AbstractGame{
         
     }
 
-    // méthode execute : met à jour le plateau en placeant l'identifiant X ou O du
-    // joueur dans la case spécifiée par le joueur courant 
-
-    // L'identifiant du joueur1 est: X
-    // L'identifiant du joueur2 est: O
-    // public void execute(int coupAJouer) {
-
-
-    // }
-
-    // méthode isValid qui vérifie la validité de la case spécifiée par le joueur
-    // courant
-    // vérification 1: valeur de la ligne comprise entre 0 et 2
-    // vérification 2: valeur de la colonne comprise entre 0 et 2
-    // vérification 3: valeur de la case corresponde est "." donc vide
-
-    // si une des trois vérifications échoue, isValid retourne false
-    // sinon la case est valide et on retourne true
+    /**
+     * Méthode isValid
+     *
+     * @param coupAJouer : l'entier correspondant au coup à jouer. Il est sous la forme 3r + c (r=row, c= column)
+     * 
+     * @return Le booléen True ou False selon que le coup passé en paramètre 
+     * respecte les conditions de validité ou non
+     */
     public boolean isValid(int coupAJouer) {
 
         if (coupAJouer/3 < 0 || coupAJouer/3 > 2 || coupAJouer%3 < 0 || coupAJouer%3 > 2

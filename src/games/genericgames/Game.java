@@ -4,7 +4,18 @@ import java.util.List;
 
 import games.players.Player;
 
+/*
+ * author: @roberto_houngbo
+ * fil rouge 5: Abstraction des jeux
+ * 
+ */
+
 public interface Game{
+
+    /*
+    * Définition des méthodes abstraites qui seront utilisées dans les classes des jeux.
+    */
+
     public Player getCurrentPlayer();
 
     public boolean isValid(int coupAJouer);

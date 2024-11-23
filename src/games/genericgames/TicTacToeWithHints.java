@@ -6,13 +6,39 @@ import java.util.List;
 
 import games.players.Player;
 
+/*
+ * author: @roberto_houngbo
+ * game: generic games - tictactoewithhints
+ * fil rouge 5: Jeu du morpion avec indices abstrait
+ * 
+ */
+
 public class TicTacToeWithHints extends TicTacToe {
 
+    /**
+     * Constructeur de la classe
+     *
+     * @param joueur1 : Le premier joueur.
+     * @param joueur2 :  Le second joueur.
+     * 
+     */
     public TicTacToeWithHints(Player joueur1, Player joueur2) {
         super(joueur1, joueur2);
 
     }
 
+
+    /**
+     * Méthode hints, sans argument, qui retourne les hints pour le joueur courant
+     * sous la forme d’une liste d’entiers représentant des coups
+     * 
+     * Chaque entier étant sous la forme i = 3r + c (r=row, c=column)
+     * 
+     * @return La liste des hints(menaces) pour le joueur courant
+     * 
+     * La méthode simule le prochain coup de l'adversaire en testant plusieurs coups possibles. 
+     * Si un coup testé permet à l'adversaire de gagner, ce coup est ajoué à la liste des hints.
+     */
     public List<Integer> hints() {
 
         List<Integer> hints = new ArrayList<Integer>();
@@ -60,6 +86,20 @@ public class TicTacToeWithHints extends TicTacToe {
         return hints;
     }
 
+
+    /**
+     * Méthode situationToString qui affiche la situation courante du jeu en ajoutant un affichage pour les hints
+     * s'il y en a.
+     *
+     * @return Un string de la situation courante.
+     * 
+     * La méthode vérifie si la liste des hints est vide, si c'est le cas elle affiche 
+     * la situation normale de la partie.
+     * 
+     * Sinon elle parcours la liste des hints, et pour chaque hint trouvé elle affiche un
+     * message de mise en garde avec au passage un caractère  "!" dans la case du coup gagnant 
+     * pour l'adversaire au prochain tour. 
+     */
     public String situationToString() {
         int positionHint;
         

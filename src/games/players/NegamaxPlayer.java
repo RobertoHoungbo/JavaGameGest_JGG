@@ -2,12 +2,32 @@ package games.players;
 
 import games.genericgames.Game;
 
+/*
+ * author: @roberto_houngbo
+ * fil rouge 6: Algorithme Négamax
+ * 
+ */
+
 public class NegamaxPlayer implements Player{
-    
+
+    /**
+     * Constructeur de la classe
+     */
     public NegamaxPlayer(){
 
     }
 
+
+    /**
+     * Méthode evaluate
+     *
+     * @param currentGame : La situation courante du jeu joué.
+     * 
+     * @return La valeur de la situation courante du jeu une fois évaluée.
+     * 
+     * La méthode évalue récursivemnt le jeu selon que le joueur courant soit le gagnant ou non ou que la partie soit nulle.
+     * Un entier résultant de cette évaluation est ensuite renvoyée.
+     */
     public int evaluate(Game currentGame){
         if(currentGame.getWinner() == currentGame.getCurrentPlayer()){
             return +1;
@@ -40,7 +60,18 @@ public class NegamaxPlayer implements Player{
             return res;
             }
         }
+    
 
+    /**
+     * Redéfinition de la méthode chooseMove
+     *
+     * @param currentGame : La situation courante du jeu joué.
+     * 
+     * @return Le meilleur coup pouvant être joué dans la situation courante du jeu.
+     * 
+     * La méthode évalue récursivemnt le jeu selon que le joueur courant soit le gagnant ou non ou que la partie soit nulle.
+     * En fonction du résultat de l'évaluation, le meilleur coup à jouer est choisi et renvoyé.
+     */
     @Override
     public int chooseMove(Game currentGame){
         System.out.println("Au tour de Joueur Négamax n°" + this.hashCode());
@@ -64,6 +95,12 @@ public class NegamaxPlayer implements Player{
         return meilleurCoup;
     }
 
+    /**
+     * Redéfinition de la méthode toString
+     *
+     * @return Le nom (hashcode) du joeur Négamax qui appelle la méthode.
+     * 
+     */
     @Override
     public String toString() {
         return "Joueur Négamax n° " + this.hashCode() + ".";
