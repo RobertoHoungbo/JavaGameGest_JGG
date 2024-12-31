@@ -1,12 +1,14 @@
-Groupe n°30
+Projet Java : Conception d'une application consistant en un ensemble de jeux de
+stratégie simples, accompagnés d’un algorithme d’intelligence artificielle capable de jouer à tous ces jeux,
+et d’un moteur de jeu permettant de faire jouer, à n’importe lequel de ces jeux, un joueur humain contre
+un autre, contre un joueur aléatoire, contre l’algorithme, ou encore l’algorithme contre lui-même, contre
+un joueur aléatoire, etc.
 
-Houngbo Roberto (num étudiant 22410324), groupe TP 2B
 
 Le dossier src/ contient les sources Java.
 Le dossier lib/ est destiné à recevoir les librairies externes. 
 Le dossier build/ à recevoir les fichiers compilés.
 
-Toutes les sept (07) parties du TP ont été traitées.
 
 Les classes exécutables sont :
 
